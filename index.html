@@ -1237,27 +1237,28 @@ async function handleSignup(e) {
   btn.disabled = true;
 
   try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+
     const res = await fetch(
       'https://kyn-subscribe.broken-snowflake-6553.workers.dev',
       {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: emailEl.value
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: emailEl.value }),
+        signal: controller.signal
       }
     );
+
+    clearTimeout(timeout);
 
     if (res.ok || res.status === 200 || res.status === 201) {
       showSuccess(btn, note, emailEl);
     } else {
-      // API returned an error — redirect so no subscriber is lost
       redirectToBeehiiv(emailEl.value);
     }
   } catch (err) {
-    // CORS or network error — redirect so no subscriber is lost
+    // Timeout or network error — redirect so nobody is lost
     redirectToBeehiiv(emailEl.value);
   }
 }
