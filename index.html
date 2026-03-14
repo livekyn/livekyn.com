@@ -180,7 +180,7 @@ body::after {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 0;
   margin-bottom: 48px;
   animation-delay: .25s;
 }
@@ -190,9 +190,10 @@ body::after {
   font-weight: 300;
   font-style: italic;
   font-size: clamp(5rem, 16vw, 13rem);
-  line-height: .85;
+  line-height: 1;
   color: var(--bone);
   letter-spacing: -.01em;
+  display: block;
 }
 
 .hero-sub {
@@ -202,6 +203,8 @@ body::after {
   letter-spacing: .28em;
   text-transform: uppercase;
   color: var(--sienna);
+  margin-top: 16px;
+  display: block;
 }
 
 /* Ochre rule */
@@ -255,22 +258,23 @@ body::after {
 
 .scroll-line {
   width: 1px;
-  height: 48px;
-  background: linear-gradient(to bottom, transparent, rgba(232,223,208,.2), transparent);
+  height: 64px;
+  background: linear-gradient(to bottom, transparent, var(--ochre), transparent);
   animation: scrollPulse 2.5s ease-in-out infinite;
 }
 
 @keyframes scrollPulse {
-  0%, 100% { opacity: .3; transform: scaleY(.8); }
-  50%       { opacity: .7; transform: scaleY(1); }
+  0%, 100% { opacity: .5; transform: scaleY(.85); }
+  50%       { opacity: 1; transform: scaleY(1); }
 }
 
 .scroll-label {
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 600;
-  letter-spacing: .22em;
+  letter-spacing: .25em;
   text-transform: uppercase;
-  color: rgba(232,223,208,.2);
+  color: var(--ochre);
+  opacity: .7;
 }
 
 /* ================================================================
@@ -450,10 +454,10 @@ body::after {
 }
 
 .ingredients-footnote {
-  margin-top: 32px;
-  font-size: 11px;
-  font-weight: 300;
-  color: rgba(232,223,208,.25);
+  margin-top: 40px;
+  font-size: clamp(14px, 2vw, 17px);
+  font-weight: 500;
+  color: var(--ochre);
   letter-spacing: .06em;
 }
 
@@ -957,13 +961,13 @@ body::after {
 
     <!-- Kicker -->
     <p class="hero-kicker anim-rise" style="animation-delay:.1s;">
-      livekyn.com · Founding Member Launch
+      livekyn.com · Founding Member Exclusive
     </p>
 
     <!-- Logo lockup -->
     <div class="hero-logo anim-rise" style="animation-delay:.28s;" aria-label="KYN — Ancestral Protein">
       <div class="hero-wordmark">kyn</div>
-      <div class="hero-sub">Ancestral Protein</div>
+      <div class="hero-sub">The Ancestral Protein Bar</div>
     </div>
 
     <!-- Ochre rule -->
@@ -1017,38 +1021,34 @@ body::after {
 <section class="ingredients" aria-label="KYN Ingredients">
   <div class="ingredients-inner">
 
-    <p class="ingredients-kicker reveal">The Label</p>
+    <p class="ingredients-kicker reveal">The Foundation</p>
     <h2 class="ingredients-headline reveal reveal-delay-1">
-      Seven ingredients. Read every one.
+      Core ingredients. Every bar. No exceptions.
     </h2>
 
-    <ul class="ingredients-list" role="list" aria-label="KYN bar ingredients">
+    <ul class="ingredients-list" role="list" aria-label="KYN core ingredients">
       <li class="ingredient-item reveal reveal-delay-1">
         <span class="ingredient-name">Grass-Fed Beef Protein Isolate</span>
         <span class="ingredient-dot" aria-hidden="true"></span>
       </li>
       <li class="ingredient-item reveal reveal-delay-2">
-        <span class="ingredient-name">Collagen Peptides</span>
+        <span class="ingredient-name">Bovine Collagen Peptides</span>
         <span class="ingredient-dot" aria-hidden="true"></span>
       </li>
       <li class="ingredient-item reveal reveal-delay-3">
-        <span class="ingredient-name">Organic Coconut Butter</span>
+        <span class="ingredient-name">Grass-Fed Beef Tallow</span>
         <span class="ingredient-dot" aria-hidden="true"></span>
       </li>
       <li class="ingredient-item reveal reveal-delay-4">
-        <span class="ingredient-name">Raw Acacia Honey</span>
+        <span class="ingredient-name">Organic Coconut Butter</span>
         <span class="ingredient-dot" aria-hidden="true"></span>
       </li>
       <li class="ingredient-item reveal reveal-delay-5">
-        <span class="ingredient-name">Roasted Cacao Nibs &amp; Cacao Powder</span>
+        <span class="ingredient-name">Organic Cacao Butter</span>
         <span class="ingredient-dot" aria-hidden="true"></span>
       </li>
       <li class="ingredient-item reveal" style="transition-delay:.6s;">
-        <span class="ingredient-name">Ceylon Cinnamon</span>
-        <span class="ingredient-dot" aria-hidden="true"></span>
-      </li>
-      <li class="ingredient-item reveal" style="transition-delay:.7s;">
-        <span class="ingredient-name">Maldon Sea Salt</span>
+        <span class="ingredient-name">Raw Acacia Honey</span>
         <span class="ingredient-dot" aria-hidden="true"></span>
       </li>
     </ul>
@@ -1069,7 +1069,7 @@ body::after {
 
     <div class="invite-badge reveal">
       <span class="invite-badge-dot" aria-hidden="true"></span>
-      The First Hundred
+      Founding Member — Private Access
     </div>
 
     <h2 class="invite-headline reveal reveal-delay-1">
@@ -1077,7 +1077,7 @@ body::after {
     </h2>
 
     <p class="invite-sub reveal reveal-delay-2">
-      We're building KYN in public, with the people who get it first. Founding members get early access, direct communication from the founder, and the bar before anyone else sees it.
+      One hundred seats. No exceptions after. Founding members get early product access, R&amp;D samples before any SKU goes public, voting rights on bar formulations, direct communication with the founder, and lifetime access to every KYN protocol and app — including KYN OS and KYN Sun.
     </p>
 
     <!-- ============================================================
@@ -1157,7 +1157,7 @@ body::after {
     <!-- Social links -->
     <nav class="footer-social reveal reveal-delay-1" aria-label="KYN on social media">
 
-      <a href="https://instagram.com/livekyn" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="KYN on Instagram">
+      <a href="https://instagram.com/livekyn_" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="KYN on Instagram">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
         Instagram
       </a>
@@ -1185,7 +1185,7 @@ body::after {
 
       <span class="social-sep" aria-hidden="true"></span>
 
-      <a href="https://t.me/livekyn" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="KYN on Telegram">
+      <a href="https://t.me/+Ura6J-gditg0MTY5" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="KYN on Telegram">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
         Telegram
       </a>
@@ -1215,11 +1215,12 @@ body::after {
 <script>
 // ─── Scroll reveal ───────────────────────────────────────────────
 
-// ─── Beehiiv signup — redirects with email pre-filled ────────────
-function handleSignup(e) {
+// ─── Beehiiv API signup ───────────────────────────────────────────
+async function handleSignup(e) {
   e.preventDefault();
   const emailEl = document.getElementById('signup-email');
   const btn     = document.getElementById('signup-btn');
+  const note    = document.getElementById('reassurance-text');
 
   if (!emailEl.value || !emailEl.validity.valid) {
     emailEl.focus();
@@ -1232,11 +1233,48 @@ function handleSignup(e) {
     return;
   }
 
-  btn.textContent = 'Taking you there...';
-  btn.classList.add('success');
+  // Loading state
+  btn.textContent = 'Joining...';
+  btn.disabled = true;
 
-  const encoded = encodeURIComponent(emailEl.value);
-  window.location.href = 'https://livekyn.beehiiv.com/subscribe?email=' + encoded;
+  try {
+    const res = await fetch(
+      'https://api.beehiiv.com/v2/publications/a246788a-3e84-46c6-9783-26c5d82cd3d5/subscriptions',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer LuMHtRK2vzdSQyl1V0r1jflV3vb0tucZxPI4drTUMitoWGQOB3gfZKtbkQuhqo7q'
+        },
+        body: JSON.stringify({
+          email: emailEl.value,
+          reactivate_existing: false,
+          send_welcome_email: true,
+          utm_source: 'livekyn.com',
+          utm_medium: 'landing_page',
+          utm_campaign: 'founding_members'
+        })
+      }
+    );
+
+    if (res.ok || res.status === 201) {
+      // Success
+      btn.textContent = 'You\'re in. Welcome to The First Hundred.';
+      btn.style.background = '#C98B2A';
+      btn.style.color = '#1C1814';
+      btn.style.transform = 'none';
+      btn.style.boxShadow = 'none';
+      emailEl.disabled = true;
+      note.textContent = 'Check your inbox — we\'ll be in touch soon.';
+    } else {
+      throw new Error('Subscription failed');
+    }
+  } catch (err) {
+    btn.textContent = 'Join the First Hundred';
+    btn.disabled = false;
+    note.textContent = 'Something went wrong. Try again or email us at chris@livekyn.com';
+    note.style.color = '#B85430';
+  }
 }
 const revealEls = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries) => {
@@ -1252,6 +1290,9 @@ revealEls.forEach(el => revealObserver.observe(el));
 
 
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
