@@ -1238,20 +1238,14 @@ async function handleSignup(e) {
 
   try {
     const res = await fetch(
-      'https://api.beehiiv.com/v2/publications/a246788a-3e84-46c6-9783-26c5d82cd3d5/subscriptions',
+      'https://kyn-subscribe.broken-snowflake-6553.workers.dev',
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer LuMHtRK2vzdSQyl1V0r1jflV3vb0tucZxPI4drTUMitoWGQOB3gfZKtbkQuhqo7q'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          email: emailEl.value,
-          reactivate_existing: false,
-          send_welcome_email: true,
-          utm_source: 'livekyn.com',
-          utm_medium: 'landing_page',
-          utm_campaign: 'founding_members'
+          email: emailEl.value
         })
       }
     );
