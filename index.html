@@ -1215,7 +1215,7 @@ body::after {
 <script>
 // ─── Scroll reveal ───────────────────────────────────────────────
 
-// ─── Beehiiv API signup ───────────────────────────────────────────
+// ─── Beehiiv signup — CORS-safe with redirect fallback ───────────
 async function handleSignup(e) {
   e.preventDefault();
   const emailEl = document.getElementById('signup-email');
@@ -1233,7 +1233,6 @@ async function handleSignup(e) {
     return;
   }
 
-  // Loading state
   btn.textContent = 'Joining...';
   btn.disabled = true;
 
@@ -1257,24 +1256,32 @@ async function handleSignup(e) {
       }
     );
 
-    if (res.ok || res.status === 201) {
-      // Success
-      btn.textContent = 'You\'re in. Welcome to The First Hundred.';
-      btn.style.background = '#C98B2A';
-      btn.style.color = '#1C1814';
-      btn.style.transform = 'none';
-      btn.style.boxShadow = 'none';
-      emailEl.disabled = true;
-      note.textContent = 'Check your inbox — we\'ll be in touch soon.';
+    if (res.ok || res.status === 200 || res.status === 201) {
+      showSuccess(btn, note, emailEl);
     } else {
-      throw new Error('Subscription failed');
+      // API returned an error — redirect so no subscriber is lost
+      redirectToBeehiiv(emailEl.value);
     }
   } catch (err) {
-    btn.textContent = 'Join the First Hundred';
-    btn.disabled = false;
-    note.textContent = 'Something went wrong. Try again or email us at chris@livekyn.com';
-    note.style.color = '#B85430';
+    // CORS or network error — redirect so no subscriber is lost
+    redirectToBeehiiv(emailEl.value);
   }
+}
+
+function showSuccess(btn, note, emailEl) {
+  btn.textContent = 'You\'re in. Welcome to The First Hundred.';
+  btn.style.background = '#C98B2A';
+  btn.style.color = '#1C1814';
+  btn.style.transform = 'none';
+  btn.style.boxShadow = 'none';
+  btn.disabled = true;
+  emailEl.disabled = true;
+  note.textContent = 'Check your inbox \u2014 we\'ll be in touch soon.';
+  note.style.color = '';
+}
+
+function redirectToBeehiiv(email) {
+  window.location.href = 'https://livekyn.beehiiv.com/subscribe?email=' + encodeURIComponent(email);
 }
 const revealEls = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries) => {
